@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile.dev
+    # Map local source code to container volume for hot reload
+    volumes:
+      - ./backend:/app
+    ports:
+      - 8000:8000
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile.dev
+    # Map local source code to container volume for hot reload
+    # node_modules is created on the container but NOT on host, ignore here
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
