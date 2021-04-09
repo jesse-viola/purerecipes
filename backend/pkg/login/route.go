@@ -18,7 +18,7 @@ type LoginRouteInfo struct {
 	lc LoginCruder
 }
 
-// NewLoginRouteInfo provides LoginRouteInfo for creating all package routers.
+// NewLoginRouteInfo provides the route for the login package.
 func NewLoginRouteInfo(lc LoginCruder) LoginRouteInfo {
 	return LoginRouteInfo{lc}
 }
