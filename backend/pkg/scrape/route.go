@@ -37,19 +37,25 @@ func (sri ScrapeRouteInfo) GetRouteGroup() rest.RouteGroup {
 	return routeGroup
 }
 
-type scrapeWebUrlResponse struct {
-	URL  string `json:"url"`
-	Test string
+// scrapeData is the json POST body received from UI.
+type scrapeData struct {
+	URL string `json:"url"`
 }
 
+// scrapeWebUrlResp is the json response to send back to UI.
+type scrapeWebUrlResp struct {
+	BackendLogic string `json:"backend_logic"`
+}
+
+// scrapeWebUrl serves POST call to the model layer.
 func (sri ScrapeRouteInfo) scrapeWebUrl(c *gin.Context) {
-	// Call the manager
-	var scrapeData scrapeWebUrlResponse
-	// scrapeData := sri.sc.ScrapeWebUrl(stringBody) TODO implmentation
-	c.BindJSON(&scrapeData)
-	response := &scrapeWebUrlResponse{
-		URL:  scrapeData.URL,
-		Test: "you did it harry", // TODO remove
+	var data scrapeData
+	if err := c.ShouldBindJSON(&data); err == nil {
+		// here we are technically calling the implementation through the sc interface.
+		processed := sri.sc.ScrapeWebUrl(data.URL)
+		resp := scrapeWebUrlResp{BackendLogic: processed}
+		c.JSON(http.StatusOK, resp)
+	} else {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	}
-	c.JSON(http.StatusOK, response)
 }

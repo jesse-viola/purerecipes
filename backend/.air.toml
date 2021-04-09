@@ -22,7 +22,7 @@ include_ext = ["go", "yaml"]
 # Ignore these filename extensions or directories.
 exclude_dir = ["tmp"]
 # It's not necessary to trigger build each time file changes if it's too frequent.
-delay = 5000 # ms
+delay = 1000 # ms
 
 [log]
 # Show log time
