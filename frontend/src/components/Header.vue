@@ -4,6 +4,9 @@
         <nav>
             <router-link to="/login">Login</router-link>
         </nav>
+        <nav>
+            <router-link to="/scrape">Scrape</router-link>
+        </nav>
     </div>
 </template>
 

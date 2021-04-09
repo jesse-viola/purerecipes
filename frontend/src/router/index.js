@@ -3,11 +3,16 @@ import { kitchenSinkRoutes } from './kitchen-sink'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import About from '../views/About.vue'
+import Scrape from '../views/Scrape.vue'
 
 const routes = [
     {
         path: '/',
         component: Home,
+    },
+    {
+        path: '/scrape',
+        component: Scrape
     },
     {
         path: '/login',

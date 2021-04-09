@@ -120,6 +120,12 @@ dist
 # vendor/
 /tmp/
 
+# Dockerfile folder
+docker-compose
+
+# Backend tmp folder
+**/backend/tmp/*
+
 node_modules
 .DS_Store
 dist
