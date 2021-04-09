@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import InputText from '@components/InputText.vue'
+import InputText from '@/components/InputText.vue'
 
 export default {
     components: { InputText },

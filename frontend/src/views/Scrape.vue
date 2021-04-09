@@ -26,9 +26,9 @@
 
 <script>
 import { ref } from 'vue'
-import InputText from '@components/InputText.vue'
-import { api } from '@api/constants'
-import $scrape from '@api/scrape'
+import InputText from '@/components/InputText.vue'
+import { api } from '@/api/constants'
+import $scrape from '@/api/scrape'
 
 export default {
     components: { InputText },

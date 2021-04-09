@@ -1,18 +1,15 @@
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 
-/**
- * @type {import('vite').UserConfig}
- */
 export default {
     plugins: [vue()],
     alias: {
-        '@components': resolve(__dirname, 'src/components'),
-        '@api': resolve(__dirname, 'src/api'),
+        '@': resolve(__dirname, './src')
     },
     server: {
         proxy: {
-            // target is 'backend' because ...
+            // target is 'backend' because docker-compose resolves host by service name
+            // https://stackoverflow.com/questions/61823628/getting-vue-devserver-proxy-to-work-with-different-local-ports-in-docker
             '^/api/': {
                 target: 'http://backend:8000',
                 changeOrigin: true,

@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import Header from '@components/Header.vue'
+import Header from '@/components/Header.vue'
 
 const APP_VERSION = import.meta.env.VITE_APP_VERSION
 
