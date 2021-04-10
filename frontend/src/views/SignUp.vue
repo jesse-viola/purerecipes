@@ -2,39 +2,27 @@
     <div class="container mx-auto flex h-full justify-center">
         <div class="w-1/3">
             <div class="bg-white shadow-md rounded-md p-8 mt-16">
-                <div class="mb-4">
-                    <label
-                        class="block text-grey-darker text-sm font-bold mb-2"
-                        for="username"
+                <form>
+                    <div class="flex flex-col mb-4">
+                        <InputText v-model="email" label="Email" />
+                    </div>
+                    <div class="flex flex-col mb-8">
+                        <InputText
+                            type="password"
+                            v-model="password"
+                            label="Password"
+                        />
+                    </div>
+                    <div class="flex justify-center">
+                        <Button @click="signUp()">Sign Up</Button>
+                    </div>
+                </form>
+                <p class="flex justify-center text-sm mt-4">
+                    Already have an account?
+                    <router-link to="/login" class="ml-2 font-bold"
+                        >Sign In</router-link
                     >
-                        Username
-                    </label>
-                    <InputText v-model="username" />
-                </div>
-                <div class="mb-6">
-                    <label
-                        class="block text-grey-darker text-sm font-bold mb-2"
-                        for="password"
-                    >
-                        Password
-                    </label>
-                    <InputText type="password" v-model="password" />
-                </div>
-                <div class="flex items-center justify-between">
-                    <button
-                        @click="signIn()"
-                        class="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded"
-                        type="button"
-                    >
-                        Sign In
-                    </button>
-                    <a
-                        class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker"
-                        href="#"
-                    >
-                        Forgot Password?
-                    </a>
-                </div>
+                </p>
             </div>
         </div>
     </div>
@@ -44,26 +32,25 @@
 import { ref } from 'vue'
 import $auth from '@/api/auth'
 import InputText from '@/components/InputText.vue'
+import Button from '@/components/Button.vue'
 
 export default {
-    components: { InputText },
+    components: { InputText, Button },
     setup() {
-        const username = ref('')
+        const email = ref('')
         const password = ref('')
 
-        const signIn = async () => {
+        const signUp = async () => {
             const res = await $auth.login({
-                username: username.value,
+                email: email.value,
                 password: password.value,
             })
-
-            alert(res.data)
         }
 
         return {
-            username,
+            email,
             password,
-            signIn,
+            signUp,
         }
     },
 }

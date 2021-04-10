@@ -1,6 +1,9 @@
 <template>
+    <label v-if="label" class="block text-grey-darker text-sm font-bold mb-2">
+        {{ label }}
+    </label>
     <input
-        class="border border-black px-2 leading-8"
+        class="full-width border border-black px-2 leading-8"
         :value="modelValue"
         @input="onInput"
     />
@@ -11,6 +14,7 @@ export default {
     emits: ['update:modelValue'],
     props: {
         modelValue: null,
+        label: String,
     },
     setup(_, { emit }) {
         const onInput = (e) => {

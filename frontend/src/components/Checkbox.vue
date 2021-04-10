@@ -1,10 +1,17 @@
 <template>
-    <input type="checkbox" />
+    <div class="flex items-center">
+        <input type="checkbox" />
+        <label v-if="label" class="ml-2 text-sm">
+            {{ label }}
+        </label>
+    </div>
 </template>
 
 <script>
 export default {
-    props: {},
+    props: {
+        label: String,
+    },
 }
 </script>
 

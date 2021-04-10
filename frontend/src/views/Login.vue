@@ -2,39 +2,33 @@
     <div class="container mx-auto flex h-full justify-center">
         <div class="w-1/3">
             <div class="bg-white shadow-md rounded-md p-8 mt-16">
-                <div class="mb-4">
-                    <label
-                        class="block text-grey-darker text-sm font-bold mb-2"
-                        for="username"
+                <form>
+                    <div class="flex flex-col mb-4">
+                        <InputText v-model="email" label="Email" />
+                    </div>
+                    <div class="flex flex-col mb-4">
+                        <InputText
+                            type="password"
+                            v-model="password"
+                            label="Password"
+                        />
+                    </div>
+                    <div class="flex items-center justify-between mb-8">
+                        <Checkbox label="Remember me" />
+                        <router-link to="/forgot" class="ml-2 font-bold text-sm"
+                            >Forgot?</router-link
+                        >
+                    </div>
+                    <div class="flex justify-center">
+                        <Button @click="logIn()">Log In</Button>
+                    </div>
+                </form>
+                <p class="flex justify-center text-sm mt-4">
+                    Are you new here?
+                    <router-link to="/signUp" class="ml-2 font-bold"
+                        >Sign Up</router-link
                     >
-                        Username
-                    </label>
-                    <InputText v-model="username" />
-                </div>
-                <div class="mb-6">
-                    <label
-                        class="block text-grey-darker text-sm font-bold mb-2"
-                        for="password"
-                    >
-                        Password
-                    </label>
-                    <InputText type="password" v-model="password" />
-                </div>
-                <div class="flex items-center justify-between">
-                    <button
-                        @click="signIn()"
-                        class="bg-blue-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded"
-                        type="button"
-                    >
-                        Sign In
-                    </button>
-                    <a
-                        class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker"
-                        href="#"
-                    >
-                        Forgot Password?
-                    </a>
-                </div>
+                </p>
             </div>
         </div>
     </div>
@@ -44,16 +38,18 @@
 import { ref } from 'vue'
 import $auth from '@/api/auth'
 import InputText from '@/components/InputText.vue'
+import Button from '@/components/Button.vue'
+import Checkbox from '@/components/Checkbox.vue'
 
 export default {
-    components: { InputText },
+    components: { InputText, Button, Checkbox },
     setup() {
-        const username = ref('')
+        const email = ref('')
         const password = ref('')
 
-        const signIn = async () => {
+        const logIn = async () => {
             const res = await $auth.login({
-                username: username.value,
+                email: email.value,
                 password: password.value,
             })
 
@@ -61,9 +57,9 @@ export default {
         }
 
         return {
-            username,
+            email,
             password,
-            signIn,
+            logIn,
         }
     },
 }
