@@ -1,7 +1,7 @@
 <template>
     <Overlay :show="open">
-        <div class="modal-wrapper">
-            <div class="modal-content">
+        <div class="toast-wrapper">
+            <div class="toast-content">
                 <slot></slot>
             </div>
         </div>
@@ -20,14 +20,15 @@ export default {
 </script>
 
 <style>
-.modal-wrapper {
-    width: 100%;
-    height: 100%;
+.toast-wrapper {
+    width: 200px;
+    /* width: 100%;
+    height: 100%; */
     display: flex;
     align-items: center;
     justify-content: center;
 }
-.modal-content {
+.toast-content {
     background-color: #fff;
     border-radius: 0.25rem;
     padding: 2rem;

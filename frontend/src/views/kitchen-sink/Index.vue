@@ -25,6 +25,7 @@ export default {
             { path: 'checkbox', label: 'Checkbox' },
             { path: 'button', label: 'Button' },
             { path: 'modal', label: 'Modal' },
+            { path: 'toast', label: 'Toast' },
         ]
 
         return {
