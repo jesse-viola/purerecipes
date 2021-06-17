@@ -5,10 +5,11 @@
 </template>
 
 <script>
+import SearchBar from '@/components/SearchBar.vue'
 import Categories from '@/components/Categories.vue'
 
 export default {
-    components: { Categories },
+    components: { SearchBar, Categories },
     setup() {},
 }
 </script>
