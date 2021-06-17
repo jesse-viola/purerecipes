@@ -7,9 +7,10 @@
 <script>
 import { ref, computed, onMounted, onBeforeMount } from 'vue'
 import $recipes from '../api/recipes'
+import SearchBar from '@/components/SearchBar.vue'
 
 export default {
-    components: {},
+    components: { SearchBar },
     setup() {},
 }
 </script>
