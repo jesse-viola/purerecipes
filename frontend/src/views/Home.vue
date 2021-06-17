@@ -5,11 +5,10 @@
 </template>
 
 <script>
-import { ref, computed, onMounted, onBeforeMount } from 'vue'
-import $recipes from '../api/recipes'
+import Categories from '@/components/Categories.vue'
 
 export default {
-    components: {},
+    components: { Categories },
     setup() {},
 }
 </script>
