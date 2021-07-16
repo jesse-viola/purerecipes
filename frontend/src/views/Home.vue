@@ -13,9 +13,3 @@ export default {
     setup() {},
 }
 </script>
-
-<style>
-.recipe {
-    text-align: left;
-}
-</style>

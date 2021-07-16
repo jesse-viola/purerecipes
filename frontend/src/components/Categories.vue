@@ -10,13 +10,15 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { CategoryType } from '@/types/Category'
 import Category from '@/components/Category.vue'
 
-export default {
+export default defineComponent({
     components: { Category },
     setup() {
-        const items = [
+        const items: CategoryType[] = [
             {
                 id: 1,
                 label: 'Brunch',
@@ -43,7 +45,7 @@ export default {
             items,
         }
     },
-}
+})
 </script>
 
 <style></style>
