@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Scrape from '../views/Scrape.vue'
 import SignUp from '../views/SignUp.vue'
+import Recipe from '../views/Recipe.vue'
 
 const routes = [
     {
@@ -12,7 +13,7 @@ const routes = [
     },
     {
         path: '/scrape',
-        component: Scrape
+        component: Scrape,
     },
     {
         path: '/login',
@@ -21,6 +22,10 @@ const routes = [
     {
         path: '/signup',
         component: SignUp,
+    },
+    {
+        path: '/recipe',
+        component: Recipe,
     },
 ]
 
