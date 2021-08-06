@@ -5,19 +5,33 @@
         >
             <img src="https://via.placeholder.com/200x150" />
             <div class="flex flex-col p-3 bg-white">
-                <div>Title</div>
-                <div>Rating</div>
-                <div class="flex justify-end">Time</div>
+                <div>{{ recipe.title }}</div>
+                <div>{{ recipe.rating }}</div>
+                <div class="flex justify-end">{{ cookTime }}</div>
             </div>
         </div>
     </router-link>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { RecipeCardType } from '@/types/Recipe'
+import { computed, defineComponent, PropType } from 'vue'
 
 export default defineComponent({
-    setup() {},
+    props: {
+        recipe: {
+            type: Object as PropType<RecipeCardType>
+        }
+    },
+    setup(props) {
+        const cookTime = computed(() => {
+            return `${props.recipe.time}m`
+        })
+
+        return {
+            cookTime
+        }
+    },
 })
 </script>
 
