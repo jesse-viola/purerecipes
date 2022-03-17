@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile.dev
     # Map local source code to container volume for hot reload
     volumes:
-      - ./backend:/app
+      - ./backend:/backend
     ports:
       - 8000:8000
   frontend:
