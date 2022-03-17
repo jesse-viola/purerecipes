@@ -2,9 +2,7 @@
 
 ## Development tools
 
-3rd party tools for quick reloads on source code changes.
-
-- https://github.com/cosmtrek/air (golang)
+https://python-poetry.org/ for backend package management
 
 All submodules have both Dockerfile.dev which is called from the docker-compose.dev.yml.
 
