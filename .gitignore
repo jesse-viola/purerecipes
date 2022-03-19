@@ -110,6 +110,7 @@ dist
 *.so
 *.dylib
 *.vscode
+*-workspace
 # Test binary, built with `go test -c`
 *.test
 
