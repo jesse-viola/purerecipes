@@ -51,6 +51,7 @@ RUN curl -sSL https://install.python-poetry.org | python3 -
 WORKDIR $PYSETUP_PATH
 COPY poetry.lock pyproject.toml ./
 
+# copy project src files
 COPY --from=python-base ./backend /backend/
 
 # install runtime deps - uses $POETRY_VIRTUALENVS_IN_PROJECT internally
@@ -75,3 +76,7 @@ WORKDIR /backend
 
 EXPOSE 8000
 CMD ["uvicorn", "--reload", "server.main:app"]
+
+# TO DEBUG
+# Make sure you activate the poetry venv by selecting the interpreter at
+# "/opt/pysetup/.venv/bin/python3.9"

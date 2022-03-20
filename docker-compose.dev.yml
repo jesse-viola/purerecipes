@@ -9,6 +9,8 @@ services:
       - ./backend:/backend
     ports:
       - 8000:8000
+    networks:
+      - purerecipe
   frontend:
     build:
       context: frontend
@@ -20,5 +22,11 @@ services:
       - /app/node_modules
     ports:
       - 3000:3000
+    networks:
+      - purerecipe
     depends_on:
       - backend
+
+networks:
+    purerecipe:
+        driver: bridge
