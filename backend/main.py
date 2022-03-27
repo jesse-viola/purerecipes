@@ -6,6 +6,7 @@ from server.router import api_router as v1_router
 app = FastAPI()
 
 app.include_router(v1_router)
+# testingasdfasdf
 
 # For debugging
 if __name__ == "__main__":

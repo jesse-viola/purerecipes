@@ -1,6 +1,6 @@
 import requests
 
-from fastapi import Depends, HTTPException
+from fastapi import HTTPException
 from bs4 import BeautifulSoup
 
 from .services import WebsiteCrawlerInterface
@@ -20,3 +20,5 @@ class BeautifulSoupManager(WebsiteCrawlerInterface):
         soup = BeautifulSoup(html_page.content, "lxml")
 
         print(soup)
+        
+website_crawler = BeautifulSoupManager()

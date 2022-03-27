@@ -1,7 +1,7 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABC, abstractmethod
 
 
-class WebsiteCrawlerInterface(ABCMeta):
+class WebsiteCrawlerInterface(ABC):
     @abstractmethod
     def crawl(self, website_link: str) -> None:
         """Takes a given website link and parses into readable data
