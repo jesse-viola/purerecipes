@@ -1,24 +1,21 @@
-import requests
-
 from fastapi import HTTPException
-from bs4 import BeautifulSoup
 
-from .services import WebsiteCrawlerInterface
+from internal import recipe_scrapers
+
+from .services import IScrape
 
 
-class BeautifulSoupManager(WebsiteCrawlerInterface):
-    def _get_website_html(self, website_link: str) -> requests.Response:
-        response = requests.get(website_link)
-        if response.status_code != 200:
-            raise HTTPException(
-                status_code=500, detail=f"Failed to retrieve data from {website_link}"
-            )
-        return response
+class ScrapeManager(IScrape):
+    def get_recipe(self, link: str) -> None:
+        """
+        soup.findAll() maybe check all the headers? then regex string search
+        the results for keywords.
 
-    def crawl(self, website_link: str) -> None:
-        html_page = self._get_website_html(website_link)
-        soup = BeautifulSoup(html_page.content, "lxml")
+        Good example https://github.com/hhursev/recipe-scrapers/tree/main/recipe_scrapers
+        powered by https://github.com/scrapinghub/extruct
+        structured by https://schema.org/docs/gs.html#schemaorg
 
-        print(soup)
+        """
+        recipe_scrapers.scrape_me()
         
-website_crawler = BeautifulSoupManager()
+        return soup
