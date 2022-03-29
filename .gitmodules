@@ -1,3 +1,0 @@
-[submodule "backend/internal/submodules/recipe_scrapers"]
-	path = backend/internal/submodules/recipe_scrapers
-	url = https://github.com/jesse-viola/recipe_scrapers/
