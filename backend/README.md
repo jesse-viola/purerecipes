@@ -20,6 +20,10 @@ Find this setting in the VSCode perferences `Python: Venv Path`. Now when a pyth
 
 `(backend-Yd2aQhFP-py3.9) username@MacBook-Pro purerecipes %`
 
+### Updating private git dependencies
+
+Navigate to the pyproject.toml and remove the git dependency. Then run `poetry install && poetry update`. Re-add the line and run the install and update again. This is a workaround for a bug in poetry currently
+
 ## Debugging
 
 - Start the backend container as bash as PID1
