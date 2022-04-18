@@ -1,3 +1,5 @@
+from typing import Optional
+
 import recipe_scrapers
 
 from .services import IScrape
@@ -5,8 +7,16 @@ from .schemas import Recipe
 
 
 class ScrapeManager(IScrape):
-    def get_recipe(self, link: str) -> Recipe:
-        """Uses the recipe-scrapers module to scrape website link into a Recipe schema. :py:class:`~recipe-scrapers._schemaorg.SchemaOrg`
+    """Calls the `recipe_scrapers library for web data`
+
+    Args:
+        IScrape (Interface): Subclass of IScrape
+    """
+
+    def get_recipe(self, link: str) -> Optional[Recipe]:
+        """Uses the recipe-scrapers module to scrape website
+        link into a Recipe schema.
+        :py:class:`~recipe-scrapers._schemaorg.SchemaOrg`
 
         Args:
             link (str): website url / link
@@ -15,7 +25,8 @@ class ScrapeManager(IScrape):
             Recipe: :py:class:`~server.scrape.schemas.Recipe`
         """
         recipe_data = recipe_scrapers.scrape_me(url_path=link, wild_mode=True)
-        try: 
+        recipe = None
+        try:
             recipe = Recipe(
                 title=recipe_data.title(),
                 description=recipe_data.description(),
@@ -30,7 +41,7 @@ class ScrapeManager(IScrape):
                 author=recipe_data.author(),
                 language=recipe_data.language(),
                 nutrients=recipe_data.nutrients(),
-                cuisine=recipe_data.cuisine()
+                cuisine=recipe_data.cuisine(),
             )
         except recipe_scrapers._exceptions.SchemaOrgException:
             # If one of the fields throws for not found in schema, validation will catch

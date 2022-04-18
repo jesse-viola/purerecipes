@@ -4,8 +4,14 @@ from .schemas import Recipe
 
 
 class IScrape(ABC):
+    """Interface for scraping logic
+
+    Raises:
+        NotImplementedError
+    """
+
     @abstractmethod
-    def get_recipe(self, website_link: str) -> Recipe:
+    def get_recipe(self, link: str) -> Recipe:
         """Takes a given website link parses with recipe_scrapers module
 
         Args:

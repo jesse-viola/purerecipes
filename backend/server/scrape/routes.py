@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from .schemas import URL, Recipe
 from server.managers import scrape_manager
+from .schemas import URL, Recipe
 
 router = APIRouter()
 
