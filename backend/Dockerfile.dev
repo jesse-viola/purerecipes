@@ -77,7 +77,7 @@ RUN poetry install
 WORKDIR /backend
 
 EXPOSE 8000
-CMD ["uvicorn", "--reload", "server.main:app"]
+CMD ["uvicorn", "--reload", "--host", "0.0.0.0", "main:app"]
 
 # TO DEBUG
 # Make sure you activate the poetry venv by selecting the interpreter at
